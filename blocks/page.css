@@ -1,0 +1,17 @@
+.page {
+    background-color: #fcf5e5;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    display: block;
+}
+
+.page__section {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 672px) {
+    .page__section {
+      max-width: 288px;
+    }
+  }
