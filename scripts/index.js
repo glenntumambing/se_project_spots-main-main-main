@@ -20,8 +20,8 @@ const intialCards = [
 ] ;
 
 const profileEditButton = document.querySelector(".profile__edit-btn") ;
-const profileName = document.querySelector(".profile__name")
-const profileDescription = document.querySelector(".profile__description")
+const profileName = document.querySelector(".profile__name");
+const profileDescription = document.querySelector(".profile__description");
 
 const editModal = document.querySelector("#edit-modal") ;
 const editFormElement = editModal.querySelector(".modal__form")
@@ -29,7 +29,21 @@ const editModalCloseBtn = editModal.querySelector(".modal__close-btn");
 const editModalNameInput = editModal.querySelector("#profile-name-input") ;
 const editModalDescriptionInput = editModal.querySelector("#profile-description-input") ;
 
+const cardTemplate = document.querySelector("#card-template") ;
+const cardList = document.querySelector(".cards__list");
 
+function getCardElement (data) {
+    const cardElement = cardTemplate.content.querySelector(".card").cloneNode(true);
+    const cardNameEl = cardElement.querySelector(".card__title");
+
+    //select image element
+    
+    cardNameEl.textContent= data.name;
+
+    //assign val to the img src and alt
+
+    return cardElement;
+}
 
 function openModal() {
     editModalNameInput.value = profileName.textContent;
@@ -50,3 +64,10 @@ function handleEditFormSubmit(evt) {
 profileEditButton.addEventListener("click", openModal);
 editModalCloseBtn.addEventListener("click", closeModal);
 editFormElement.addEventListener("submit, handleEditFormSubmit");
+
+for (let i = 0; i< intialCards.length; i++) {
+    const cardElement = getCardElement(intialCards[i]);
+    cardList.prepend(cardElement);
+
+    // enter DOM
+}
